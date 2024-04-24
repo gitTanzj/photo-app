@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const comment = new mongoose.Schema({
+const commentSchema = new mongoose.Schema({
     date: {
         required: true,
         type: Date
@@ -20,3 +20,5 @@ const comment = new mongoose.Schema({
         ref: 'User'
     }
 });
+
+export default mongoose.model('Comment', commentSchema);

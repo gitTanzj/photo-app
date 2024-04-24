@@ -13,3 +13,5 @@ interface Post {
     description: string;
     author: User;
 }
+
+export {}

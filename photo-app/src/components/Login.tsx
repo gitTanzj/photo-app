@@ -1,31 +1,46 @@
-import React, { useState } from 'react'
-import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const navigate = useNavigate()
+
     const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    axios.defaults.withCredentials = true
+
+    useEffect(() => {
+        axios.get('http://localhost:4000/api')
+        .then(res => {
+            if (res.data.valid === true){
+                navigate('/')
+            } else {
+                navigate('/login')
+            }
+        })
+    }, [navigate])
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        if (username === '' || password === '' || email === '') {
+        if (email === '' || password === '') {
             alert('Please enter all fields')
             return
         } else {
-          const response = await axios.post('http://localhost:4000/api/account/register',
+            const response = await axios.post('http://localhost:4000/account/login',
          {
             email: email,
-            username: username,
             password: password
         }, {
             headers: {
-              'Content-Type': 'authorization/json'
+              'Content-Type': 'application/json'
             }
           })
           .then(response => {
-            alert(response.data.message)
-            setUsername('')
+            if(response.data.Login === true){
+                navigate('/')
+            }
             setPassword('')
             setEmail('')
           })
@@ -44,19 +59,15 @@ const Login = () => {
                     <input value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </div>
                 <div className='register-field'>
-                    <label>Username</label>
-                    <input value={username} onChange={(e) => setUsername(e.target.value)}/>
-                </div>
-                <div className='register-field'>
                     <label>Password</label>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <div className="submit-container">
-                <button type='submit'>Create account</button>
+                    <button type='submit'>Log in</button>
                 </div>
             </form>
         </div>
-    )
+  )
 }
 
-export default Login
+export default Login;

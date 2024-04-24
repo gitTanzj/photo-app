@@ -1,4 +1,5 @@
 import { request, response, Router } from 'express';
+import Comment from '../models/comment';
 
 const router: Router = Router();
 
@@ -19,3 +20,5 @@ interface Comment {
     post: Post;
     author: User;
 }
+
+export {}

@@ -1,5 +1,4 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import bodyParser from 'body-parser'
 import sessions from 'express-session'
 import cors from 'cors'
@@ -37,6 +36,9 @@ app.get('/api', (req, res) => {
       res.json({ valid: false });
     }
 });
+
+import accountRoutes from './routes/account'
+app.use('/account', accountRoutes)
 
 
 
