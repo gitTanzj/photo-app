@@ -1,6 +1,7 @@
 import React from 'react'
 import Register from '../components/Register'
 import Login from '../components/Login'
+import './Entry.css'
 
 export const Entry = () => {
 
@@ -12,11 +13,11 @@ export const Entry = () => {
         {register ? 
         <div className="register">
           <h1>Register</h1>
-          <Register/>
+          <Register register={register }setRegister={setRegister}/>
         </div>
         :
         <div className="register">
-          <h1>Login</h1>
+          <h1>Log in</h1>
           <Login/>
         </div>
         }

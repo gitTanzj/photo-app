@@ -2,7 +2,11 @@ import expressSession from 'express-session';
 
 declare module 'express-session' {
     interface SessionData {
-      user: { [key: string]: any }; // Use any or replace with the correct type for your user object
+      user: {
+        username: string;
+        email: string;
+        user_id: string;
+      }; // Use any or replace with the correct type for your user object
     }
   }
   

@@ -1,11 +1,21 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
-const Register = () => {
+interface RegisterProps {
+  register: boolean;
+  setRegister: Function;
+}
+
+const Register = (props: RegisterProps) => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
+
+    const navigate = useNavigate()
+
+    axios.defaults.withCredentials = true 
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -28,6 +38,8 @@ const Register = () => {
             setUsername('')
             setPassword('')
             setEmail('')
+            props.setRegister(!props.register)
+            navigate('/login')
           })
           .catch(error => {
             console.log(error)

@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 interface User {
     username: string;
     email: string;
+    user_id: string;
 }
 
 const register = async (req: Request, res: Response) => {
@@ -29,22 +30,10 @@ const register = async (req: Request, res: Response) => {
         });
         user.save()
         .then(user => {
-            if(req.session){
-                req.session.user = {
-                    username: user.username,
-                    user_id: user.id
-                };
-                console.log(req.session)
-                res.status(201).json({
-                    message: 'New user is registered',
-                    user: user,
-                    user_session: req.session.user
-                })
-            } else{
-                res.json({
-                    "message": "Session is not available"
-                })
-            }
+            res.status(201).json({
+                message: 'New user is registerd',
+                user: user
+            })
         })
         .catch(err => {
             res.status(500).json({
@@ -64,6 +53,7 @@ const login = async (req: Request, res: Response) => {
                 if(result){
                     req.session.user = {
                         username: emails[0].username,
+                        email: emails[0].email,
                         user_id: emails[0].id
                     }
                     res.status(200).json({
@@ -77,12 +67,12 @@ const login = async (req: Request, res: Response) => {
                 }
             } else{
                 res.json({
-                    "message": "Session is not available"
+                    message: "Session is not available"
                 })
             }
         })
     } else {
-        res.send({message: 'Email is incorrect'})
+        res.json({message: 'Email is incorrect'})
     }
 }
 

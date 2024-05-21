@@ -1,0 +1,40 @@
+  .register-field{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .register-field input{
+    padding: 5px;
+  }
+  .submit-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .register-switch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .entry{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+  .register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .register-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: right;
+  }
