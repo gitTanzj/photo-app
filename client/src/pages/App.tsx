@@ -13,6 +13,8 @@ function App() {
   const navigate = useNavigate();
   const [user, setUser] = useState<User>({username:'', email: ''});
 
+
+  // Iga kord kui komponent mountib, re-fetchib client andmed
   useEffect(() => {
     axios.get('http://localhost:4000/api')
     .then(response => {
@@ -28,6 +30,8 @@ function App() {
     })
   }, [])
 
+
+  // Logout funktsioon
   const handleLogout = () => {
     axios.get('http://localhost:4000/account/logout')
     .then(response => {

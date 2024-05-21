@@ -7,6 +7,8 @@ export const Entry = () => {
 
   const [register, setRegister] = React.useState(false)
 
+
+  // register vormi ja login vormi switch
   return (
     <div className="container">
       <div className="entry">

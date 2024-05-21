@@ -9,14 +9,17 @@ interface RegisterProps {
 
 const Register = (props: RegisterProps) => {
 
+
+    // Register vormi parameetrid
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
 
     const navigate = useNavigate()
-
     axios.defaults.withCredentials = true 
 
+
+    // Register vormi saatmine
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         if (username === '' || password === '' || email === '') {

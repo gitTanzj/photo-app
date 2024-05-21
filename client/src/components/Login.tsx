@@ -11,6 +11,7 @@ const Login = () => {
 
     axios.defaults.withCredentials = true
 
+    // Iga kord kui Login component mountib, re-fetchib client andmed
     useEffect(() => {
         axios.get('http://localhost:4000/api')
         .then(res => {
@@ -22,6 +23,8 @@ const Login = () => {
         })
     }, [navigate])
 
+
+    // login vormi saatmine
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         if (email === '' || password === '') {
