@@ -14,7 +14,7 @@ function App() {
   const [user, setUser] = useState<User>({username:'', email: ''});
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/')
+    axios.get('http://localhost:4000/api')
     .then(response => {
       if (response.data.valid){
         setUser(response.data.user)
@@ -26,10 +26,10 @@ function App() {
     .catch(error => {
       error.response ? console.log(error.response) : console.log(error)
     })
-  })
+  }, [])
 
   const handleLogout = () => {
-    axios.get('http://localhost:4000/api/logout')
+    axios.get('http://localhost:4000/account/logout')
     .then(response => {
       if (response.data.logout){
         navigate('/login')
@@ -49,7 +49,7 @@ function App() {
         <div className="logout">
           <button onClick={() => handleLogout()}>Logout</button>
         </div>
-        <h1>Welcome {user.email}!!</h1>
+        <h1>Welcome {user.username}!!</h1>
       </div> 
     </div>
   );

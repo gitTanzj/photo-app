@@ -13,14 +13,14 @@ const Register = () => {
             alert('Please enter all fields')
             return
         } else {
-          const response = await axios.post('http://localhost:4000/api/account/register',
+          const response = await axios.post('http://localhost:4000/account/register',
          {
             email: email,
             username: username,
             password: password
         }, {
             headers: {
-              'Content-Type': 'authorization/json'
+              'Content-Type': 'application/json'
             }
           })
           .then(response => {
