@@ -5,6 +5,8 @@ import App from './pages/App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Entry } from './pages/Entry';
 
+
+// Routeid frontendi jaoks
 const router = createBrowserRouter([
   {
     path:'/',

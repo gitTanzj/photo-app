@@ -44,8 +44,6 @@ app.use(sessions({
 
 app.get('/api', (req, res) => {
     if (req.session && req.session.user) {
-        console.log(req.session)
-
       res.json({ valid: true, user: req.session.user });
     } if(req.session === undefined || req.session.user === undefined) {
         res.json({ valid: false });
@@ -55,6 +53,14 @@ app.get('/api', (req, res) => {
 import accountRoutes from './routes/account'
 app.use('/account', accountRoutes)
 
+import postRoutes from './routes/post'
+app.use('/post', postRoutes)
+
+import imageRoutes from './routes/image'
+app.use('/image', imageRoutes)
+
+import commentRoutes from './routes/comment'
+app.use('/comment', commentRoutes)
 
 
 app.listen(PORT, () => {

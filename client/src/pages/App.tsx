@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
+import ImageUpload from '../components/ImageUpload';
 
 interface User {
   username: string;
@@ -23,12 +24,11 @@ function App() {
       } else {
         navigate('/login')
       } 
-      console.log(response.data)
     })
     .catch(error => {
       error.response ? console.log(error.response) : console.log(error)
     })
-  }, [])
+  }, [navigate])
 
 
   // Logout funktsioon
@@ -54,6 +54,7 @@ function App() {
           <button onClick={() => handleLogout()}>Logout</button>
         </div>
         <h1>Welcome {user.username}!!</h1>
+        <ImageUpload/>
       </div> 
     </div>
   );

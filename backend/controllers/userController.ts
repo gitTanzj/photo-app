@@ -9,8 +9,6 @@ interface User {
 }
 
 const register = async (req: Request, res: Response) => {
-    console.log(req.body);
-    
     const emails = await User.find({email: req.body.email})
     if(emails.length > 0){
         return res.send({message: 'Email already exists'})

@@ -1,4 +1,4 @@
-import { request, response, Router } from 'express';
+import { Request, Response, Router } from 'express';
 import Comment from '../models/comment';
 
 const router: Router = Router();
@@ -21,4 +21,12 @@ interface Comment {
     author: User;
 }
 
-export {}
+const getCommentsByPost = () => {
+
+}
+
+const getCommentsByAuthor = () => {
+
+}
+
+export { getCommentsByAuthor, getCommentsByPost }
