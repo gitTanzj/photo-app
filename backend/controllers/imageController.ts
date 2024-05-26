@@ -1,5 +1,6 @@
 import { Request, Response, Router} from 'express';
 import Image from '../models/image'
+import fs from 'fs';
 
 interface Image {
     author: any,
@@ -29,11 +30,20 @@ const getImagesByPost = (req: Request, res: Response) => {
     })
 }
 
+
 const uploadImage = (req: Request, res: Response) => {
-    
-
-
-
+    try {
+        console.log(req.body);
+        fs.writeFile("image.jpeg", req.body, (error) => {
+            if (error) {
+                throw error;
+            }
+        });
+  
+        res.sendStatus(200);
+      } catch (error) {
+            res.sendStatus(500);
+      }
 }
 
 export {

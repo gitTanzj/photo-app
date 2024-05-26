@@ -1,35 +1,36 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react'
 import imagePlaceholder from '../assets/image-placeholder.png'
-import axios from 'axios';
-import dotenv from 'dotenv';
-
-// CLOUDINARY
-import { Cloudinary } from '@cloudinary/url-gen';
-import { auto } from '@cloudinary/url-gen/actions/resize';
-import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
-import { AdvancedImage } from '@cloudinary/react';
+import axios from 'axios'
 
 const ImageUpload = () => {
-  const cld = new Cloudinary({cloud: {cloudName: process.env.CLOUDINARY_CLOUD_NAME}});
 
   const [postImage, setPostImage] = useState({myFile: ""})
+  const [uploadFile, setUploadFile] = useState('' as any)
 
   const handleFileUpload = async (e: ChangeEvent<HTMLInputElement>) => {
-    if(e.target.files === null) return console.log('No file selected');
+    if(e.target.files === null) {
+      return console.log('No file selected');
+    }
     const file = e.target.files[0];
+    setUploadFile(file);
     const base64: any = await convertToBase64(file);
     setPostImage({ ...postImage, myFile: base64 })
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (e.target instanceof HTMLInputElement && e.target.files) {
-      const img = cld.image(postImage.myFile)
-        .format('auto') // Optimize delivery by resizing and applying auto-format and auto-quality
-        .quality('auto')
-        .resize(auto().gravity(autoGravity()).width(500).height(500));
-      console.log(img)
-    }
+    axios.post('http://localhost:4000/image/upload', uploadFile, {
+      headers: {
+        'Content-Type': 'image/jpeg'
+      }
+    })
+    .then(() => {
+      console.log('Image uploaded successfully')
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+    
   }
 
   const convertToBase64 = (file: Blob) => {
