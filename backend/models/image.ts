@@ -18,7 +18,7 @@ const imageSchema = new mongoose.Schema({
     },
     alt_text: {
         type: String,
-        required: true
+        required: false
     }
 })
 

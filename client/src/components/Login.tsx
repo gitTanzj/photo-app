@@ -6,8 +6,8 @@ const Login = () => {
 
     const navigate = useNavigate()
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('kalle.riit@gmail.com')
+    const [password, setPassword] = useState('qwerty')
 
     axios.defaults.withCredentials = true
 

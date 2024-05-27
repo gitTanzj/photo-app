@@ -19,18 +19,21 @@ const ImageUpload = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    axios.post('http://localhost:4000/image/upload', uploadFile, {
-      headers: {
-        'Content-Type': 'image/jpeg'
-      }
-    })
-    .then(() => {
-      console.log('Image uploaded successfully')
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-    
+    if(uploadFile){
+      axios.post('http://localhost:4000/image/upload', uploadFile, {
+        headers: {
+          'Content-Type': 'image/jpeg'
+        }
+      })
+      .then((response) => {
+        console.log(response.data.message)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    } else{
+      console.log("No image selected")
+    }
   }
 
   const convertToBase64 = (file: Blob) => {
