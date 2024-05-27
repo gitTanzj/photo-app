@@ -1,16 +1,17 @@
 
-
 a{
   text-decoration: underline;
   cursor: pointer;
 }
 .App{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100vh;
 }
+
 button{
   width: 100px;
   border: 1px solid #000000;
@@ -20,6 +21,7 @@ button{
   padding: 10px;
   transition: 0.1s;
   box-shadow: none;
+  font-weight: 700;
 }
 button:hover{
   transform: translate(-2px, -2px);

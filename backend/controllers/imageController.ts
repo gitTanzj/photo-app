@@ -90,35 +90,6 @@ const uploadImage = async (req: Request, res: Response) => {
     } catch (error) {
         res.status(500);
     }
-    // try {
-    //     console.log(req.body);
-    //     fs.writeFile("image.jpeg", req.body, (error) => {
-    //         if (error) {
-    //             throw error;
-    //         }
-    //     });
-    //     const index = (await Image.find()).length
-    //     const image_id = `${req.session?.user?.user_id}_${index}`
-    //     const uploadResult = await cloudinary.uploader.upload(req.body, {
-    //         public_id: image_id,
-    //         categorization: `images_${req.session?.user?.user_id}`
-    //     })
-    //     .then(() => {
-    //         console.log(uploadResult)
-    //     })
-    //     .catch((error)=>{console.log(error)});
-    //     const optimizeUrl = await cloudinary.url(image_id, {
-    //         fetch_format: 'auto',
-    //         quality: 'auto'
-    //     });
-    //     console.log(index)
-  
-    //     res.status(200).json({
-    //         "message": `Image sent successfully with url: ${optimizeUrl}`
-    //     });
-    //   } catch (error) {
-    //         res.status(500);
-    //   }
 }
 
 export {

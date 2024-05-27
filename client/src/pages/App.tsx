@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import './App.css';
 import ImageUpload from '../components/ImageUpload';
 
+import { Header } from '../components/Header';
+
 interface User {
   username: string;
   email: string;
@@ -30,29 +32,10 @@ function App() {
     })
   }, [navigate])
 
-
-  // Logout funktsioon
-  const handleLogout = () => {
-    axios.get('http://localhost:4000/account/logout')
-    .then(response => {
-      if (response.data.logout){
-        navigate('/login')
-      }
-      else {
-        console.log(response)
-      }
-    })
-    .catch(error => {
-      error.response ? console.log(error.response) : console.log(error)
-    })
-  }
-
   return (
     <div className="App">
+      <Header/>
       <div className="container">
-        <div className="logout">
-          <button onClick={() => handleLogout()}>Logout</button>
-        </div>
         <h1>Welcome {user.username}!!</h1>
         <ImageUpload/>
       </div> 
