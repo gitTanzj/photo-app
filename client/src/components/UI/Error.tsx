@@ -7,3 +7,5 @@ export const Error = (error: Error) => {
     </div>
   )
 }
+
+// Create new error component
