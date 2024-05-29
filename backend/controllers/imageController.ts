@@ -4,6 +4,7 @@ import fs from 'fs';
 import cloudinary from '../utils/cloudinary'
 import multer from 'multer'
 import { Readable } from 'stream';
+import mongo from 'mongodb';
 
 interface Image {
     author: any,
@@ -90,6 +91,10 @@ const uploadImage = async (req: Request, res: Response) => {
     } catch (error) {
         res.status(500);
     }
+}
+
+const deleteImageByAddress = (req: Request, res: Response) => {
+
 }
 
 export {
