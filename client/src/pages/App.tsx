@@ -5,16 +5,27 @@ import './App.css';
 import ImageUpload from '../components/ImageUpload';
 
 import { Header } from '../components/Header';
+import {useCookies } from 'react-cookie'
+import useSessionTimeout from '../hooks/useSessionTimeout';
+
 
 interface User {
   username: string;
   email: string;
 }
 
+interface SessionMaxAgeResponse {
+  maxAge: number;
+}
+
+
 function App() {
 
   const navigate = useNavigate();
   const [user, setUser] = useState<User>({username:'', email: ''});
+  const [cookies,setCookie] = useCookies(['user']);
+  const [sessionMaxAge, setSessionMaxAge] = useState<number | null>(null);
+
 
 
   // Iga kord kui komponent mountib, re-fetchib client andmed
@@ -23,6 +34,7 @@ function App() {
     .then(response => {
       if (response.data.valid){
         setUser(response.data.user)
+        setCookie('user', response.data.user, {path: '/'})
       } else {
         navigate('/login')
       } 
@@ -31,6 +43,27 @@ function App() {
       error.response ? console.log(error.response) : console.log(error)
     })
   }, [navigate])
+
+  // MaxAge  
+
+  useEffect(() => {
+    const fetchSessionMaxAge = async () => {
+      try {
+        const response = await fetch('/api/sessionMaxAge');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data: SessionMaxAgeResponse = await response.json();
+        setSessionMaxAge(data.maxAge);
+      } catch (error) {
+        console.error('Error fetching session maxAge:', error);
+      }
+    };
+
+    fetchSessionMaxAge();
+  }, []);
+
+  useSessionTimeout(sessionMaxAge);
 
   return (
     <div className="App">

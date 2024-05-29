@@ -42,6 +42,12 @@ app.use(sessions({
     resave: false
 }))
 
+app.get('/api/sessionMaxAge', (req, res) => {
+    const maxAge = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
+    res.json({ maxAge });
+  });
+
+
 app.get('/api', (req, res) => {
     if (req.session && req.session.user) {
       res.json({ valid: true, user: req.session.user });
