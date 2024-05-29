@@ -3,10 +3,12 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 import ImageUpload from '../components/ImageUpload';
+import { Gallery } from './Gallery';
 
 import { Header } from '../components/Header';
 
 interface User {
+  user_id: string;
   username: string;
   email: string;
 }
@@ -14,7 +16,7 @@ interface User {
 function App() {
 
   const navigate = useNavigate();
-  const [user, setUser] = useState<User>({username:'', email: ''});
+  const [user, setUser] = useState<User>({user_id: '', username:'', email: ''});
 
 
   // Iga kord kui komponent mountib, re-fetchib client andmed
@@ -36,8 +38,8 @@ function App() {
     <div className="App">
       <Header/>
       <div className="container">
-        <h1>Welcome {user.username}!!</h1>
-        <ImageUpload/>
+        <Gallery user_id={user.user_id}/>
+        {/* <ImageUpload/> */}
       </div> 
     </div>
   );
