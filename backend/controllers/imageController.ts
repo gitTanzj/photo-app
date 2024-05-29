@@ -94,13 +94,21 @@ const uploadImage = async (req: Request, res: Response) => {
 }
 
 const deleteImageByAddress = (req: Request, res: Response) => {
-
+    const imageAddress = req.params.id
+    Image.findOneAndDelete({image_address: imageAddress})
+    .then(() => {
+        res.status(201).json({message: 'Image deleted successfully.'})
+    })
+    .catch((error: Error) => {
+        console.log(error)
+    })
 }
 
 export {
     getImagesByAuthor,
     getImagesByPost,
-    uploadImage
+    uploadImage,
+    deleteImageByAddress
 }
 
 
