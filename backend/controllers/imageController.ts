@@ -4,6 +4,7 @@ import fs from 'fs';
 import cloudinary from '../utils/cloudinary'
 import multer from 'multer'
 import { Readable } from 'stream';
+import mongo from 'mongodb';
 
 interface Image {
     author: any,
@@ -92,10 +93,22 @@ const uploadImage = async (req: Request, res: Response) => {
     }
 }
 
+const deleteImageByAddress = (req: Request, res: Response) => {
+    const imageAddress = req.params.id
+    Image.findOneAndDelete({image_address: imageAddress})
+    .then(() => {
+        res.status(201).json({message: 'Image deleted successfully.'})
+    })
+    .catch((error: Error) => {
+        console.log(error)
+    })
+}
+
 export {
     getImagesByAuthor,
     getImagesByPost,
-    uploadImage
+    uploadImage,
+    deleteImageByAddress
 }
 
 
