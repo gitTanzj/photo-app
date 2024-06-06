@@ -18,7 +18,7 @@ const getPosts = (req: Request, res: Response) => {
         return res.status(200).json({posts: posts})
     })
     .catch((error: Error) => {
-        // add error handling
+        console.log(error)
     })
 
 }
@@ -34,7 +34,23 @@ const getPostsByAuthor = (req: Request, res: Response) => {
     })
 }
 
+const createPost = (req: Request, res: Response) => {
+    const post = new Post({
+        title: req.body.title,
+        description: req.body.description,
+        author: req.body.author
+    })
+    post.save()
+    .then((post) => {
+        return res.status(201).json({post: post})
+    })
+    .catch((error: Error) => {
+        console.log(error)
+    })
+}
+
 export {
     getPosts,
-    getPostsByAuthor
+    getPostsByAuthor,
+    createPost
 }

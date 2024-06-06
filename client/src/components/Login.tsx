@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useUserContext } from '../hooks/useUserContext'
 
 const Login = () => {
 
     const navigate = useNavigate()
+    const { dispatch } = useUserContext();
 
     const [email, setEmail] = useState('kalle.riit@gmail.com')
     const [password, setPassword] = useState('qwerty')
@@ -16,12 +18,13 @@ const Login = () => {
         axios.get('http://localhost:4000/api')
         .then(res => {
             if (res.data.valid === true){
+                dispatch({ type: 'LOGIN', payload: res.data.user })
                 navigate('/')
             } else {
                 navigate('/login')
             }
         })
-    }, [navigate])
+    }, [navigate, dispatch])
 
 
     // login vormi saatmine

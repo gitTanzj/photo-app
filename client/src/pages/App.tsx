@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Outlet } from 'react-router-dom';
 import './App.css';
-import ImageUpload from '../components/ImageUpload';
-import { Gallery } from './Gallery';
-
 import { Header } from '../components/Header';
+import { useUserContext } from '../hooks/useUserContext';
+
 
 interface User {
   user_id: string;
@@ -14,17 +13,16 @@ interface User {
 }
 
 function App() {
+  const { dispatch } = useUserContext();
 
   const navigate = useNavigate();
-  const [user, setUser] = useState<User>({user_id: '', username:'', email: ''});
-
 
   // Iga kord kui komponent mountib, re-fetchib client andmed
   useEffect(() => {
     axios.get('http://localhost:4000/api')
     .then(response => {
       if (response.data.valid){
-        setUser(response.data.user)
+        dispatch({ type: 'LOGIN', payload: response.data.user as User })
       } else {
         navigate('/login')
       } 
@@ -32,14 +30,13 @@ function App() {
     .catch(error => {
       error.response ? console.log(error.response) : console.log(error)
     })
-  }, [navigate])
+  }, [navigate, dispatch])
 
   return (
     <div className="App">
       <Header/>
       <div className="container">
-        <Gallery user_id={user.user_id}/>
-        {/* <ImageUpload/> */}
+        <Outlet />
       </div> 
     </div>
   );

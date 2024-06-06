@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import axios from 'axios';
-
-interface GalleryProps {
-    user_id: string;
-}
+import './Gallery.css';
+import { useUserContext } from '../hooks/useUserContext';
 
 interface Image {
     author: string,
@@ -11,12 +9,13 @@ interface Image {
     _id: string,
 }
 
-export const Gallery: React.FC<GalleryProps> = ({ user_id }) => {
+export const Gallery: React.FC = () => {
 
     const [images, setImages] = React.useState([])
+    const { state } = useUserContext();
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/image/${user_id}`)
+        axios.get(`http://localhost:4000/image/${state.user.user_id}`)
         .then(response => {
             console.log(response)
             setImages(response.data.images)
@@ -24,15 +23,15 @@ export const Gallery: React.FC<GalleryProps> = ({ user_id }) => {
         .catch((error: Error) => {
             console.log(error)
         })
-    }, [user_id])
+    }, [state.user.user_id])
 
     return (
         <div className="gallery">
             <div className="gallery-images">
-                {images.map((image: Image) => {
+                {images.length === 0 ? <div>No images found.</div> : images.map((image: Image) => {
                     return (
                         <div key={image._id}>
-                            <img src={image.image_address} alt={image.author} width="300"/>
+                            <img src={image.image_address} alt={image.author} width="300" className="gallery-image"/>
                         </div>
                     )
                 })}

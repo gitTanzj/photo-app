@@ -1,0 +1,16 @@
+.gallery{
+    padding: 10px;
+    width: 90%;
+    height: 90%;
+}
+.gallery-images{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1%;
+}
+.gallery-image{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+}

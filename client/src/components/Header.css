@@ -6,10 +6,20 @@
     align-items: center;
     justify-content: space-around;
 }
+.header-container a{
+    text-decoration: none;
+}
 .header-text{
     padding: 0 5% 0 5%;
     font-family: 'Indie Flower', cursive;
     font-size: 1.5em;
+}
+.header-links{
+    display: flex;
+    align-items: center;
+}
+.header-links *{
+    padding: 0% 20% 0% 20%;
 }
 .logout{
     margin-left: auto;
