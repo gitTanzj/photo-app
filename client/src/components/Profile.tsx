@@ -3,29 +3,9 @@ import React, { useEffect,useState } from 'react';
 import { useUserContext } from '../hooks/useUserContext';
 import { Post } from './Post';
 
-interface ProfileData {
-  username: string;
-  bio: string;
-}
-
-
-
-
 export const Profile = () => {
-  const [profileData, setProfile] = React.useState<ProfileData[]>([]);
   const { state } = useUserContext();
   const [posts, setPosts] = useState([])
-
-  useEffect(() => {
-    axios.get(`http://localhost:4000/user/${state.user.username}`)
-      .then(response => {
-        console.log('fetch response', response);
-        setProfile(response.data.profile_data);
-      })
-      .catch((error) => {
-        console.error('Error fetching profile data:', error);
-      });
-  }, [state.user.username]); 
 
   useEffect(() => {
     axios.get('http://localhost:4000/post')
