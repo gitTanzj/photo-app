@@ -8,6 +8,7 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 import { UserContextProvider } from './context/userContext';
 import { Gallery } from './components/Gallery';
 import { Timeline } from './components/Timeline';
+import { Image } from './components/Image';
 
 // Routeid frontendi jaoks
 const router = createBrowserRouter(
@@ -16,7 +17,11 @@ const router = createBrowserRouter(
       <Route path="/" element={<App/>}>
         <Route index element={<Timeline/>}/>
         <Route path="profile" element={<Profile/>}/>
-        <Route path="gallery" element={<Gallery/>}/>
+        <Route path="gallery">
+          <Route index element={<Gallery/>}/>
+          <Route path="gallery/:user_id" element={<Gallery/>}/>
+        </Route>
+        <Route path=":image_id" element={<Image/>}></Route>
       </Route>
       <Route path="/login" element={<Entry/>}/>
     </Route>

@@ -13,7 +13,7 @@ export const Timeline = () => {
     axios.get('http://localhost:4000/post')
     .then(res => setPosts(res.data.posts))
     .catch(err => console.log(err))
-  }, [posts])
+  }, [posting])
 
   return (
     <div className="timeline-container">
@@ -23,7 +23,7 @@ export const Timeline = () => {
           <div className="timeline-create-post" onClick={() => {setPosting(true)}}>Create Your Post Here</div>
       }
       {posts.map((post: any) => (
-        <Post title={post.title} description={post.description} images={post.images} author={post.author}/>
+        <Post key={post._id} title={post.title} description={post.description} images={post.images} author={post.author}/>
       ))}
     </div>
   )

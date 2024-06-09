@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import axios from 'axios';
 import './Gallery.css';
 import { useUserContext } from '../hooks/useUserContext';
+import { useNavigate } from 'react-router-dom';
 
 interface Image {
     author: string,
@@ -10,6 +11,8 @@ interface Image {
 }
 
 export const Gallery: React.FC = () => {
+
+    const navigate = useNavigate()
 
     const [images, setImages] = React.useState([])
     const { state } = useUserContext();
@@ -30,7 +33,7 @@ export const Gallery: React.FC = () => {
             <div className="gallery-images">
                 {images.length === 0 ? <div>No images found.</div> : images.map((image: Image) => {
                     return (
-                        <div key={image._id}>
+                        <div key={image._id} className="gallery-image" onClick={() => navigate(`/${image._id}`, {state: { image: image }})}>
                             <img src={image.image_address} alt={image.author} width="300" className="gallery-image"/>
                         </div>
                     )

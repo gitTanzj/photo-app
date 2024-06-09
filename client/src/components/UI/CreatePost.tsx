@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {FormEvent, useState} from 'react';
 import './CreatePost.css';
 import axios from 'axios';
 import { useUserContext } from '../../hooks/useUserContext';
@@ -14,12 +14,17 @@ export const CreatePost: React.FC<createPostProps> = ({ setPosting }) => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
     console.log('submitting post')
-    axios.post('http://localhost:4000/post', {
+    const response = await axios.post('http://localhost:4000/post', {
         title: title,
         description: description,
         author: state.user.user_id
+    }, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
     .then(res => {
         console.log(res)
@@ -27,7 +32,8 @@ export const CreatePost: React.FC<createPostProps> = ({ setPosting }) => {
         setDescription('')
         setPosting(false)
     })
-    .catch(err => console.log(err))
+    .catch((err: Error) => console.log(err.message))
+    return response
   }
 
   return (
