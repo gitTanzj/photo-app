@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, Outlet } from 'react-router-dom';
 import './App.css';
 import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
 import { useUserContext } from '../hooks/useUserContext';
 
 
@@ -36,8 +37,9 @@ function App() {
     <div className="App">
       <Header/>
       <div className="container">
-        <Outlet />
+        <Outlet/>
       </div> 
+      <Footer/>
     </div>
   );
 }

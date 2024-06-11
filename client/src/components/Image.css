@@ -1,0 +1,14 @@
+.image-page-container{
+    display: flex;
+    width: 90%;
+    height: 100%;
+    padding: 5%;
+}
+.image-container{
+    display: flex;
+    max-width: 300px;
+}
+.image-functions{
+    display: flex;
+    padding: 5%;
+}
