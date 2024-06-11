@@ -19,6 +19,10 @@ const imageSchema = new mongoose.Schema({
     alt_text: {
         type: String,
         required: false
+    },
+    image_public_id: {
+        type: String,
+        required: true
     }
 })
 

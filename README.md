@@ -13,3 +13,4 @@
 [] - Overall styling
 [] - Create tests for frontend
 [] - Create Figma
+[] - Create Footer component

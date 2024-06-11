@@ -9,7 +9,8 @@ import mongo from 'mongodb';
 interface Image {
     author: any,
     image_address: string,
-    alt_text: string
+    alt_text: string,
+    image_public_id: string
 }
 
 const upload = multer({ storage: multer.memoryStorage() });
@@ -65,7 +66,8 @@ const uploadImage = async (req: Request, res: Response) => {
 
               const image = new Image({
                 author: req.session?.user?.user_id,
-                image_address: optimizeUrl
+                image_address: optimizeUrl,
+                image_public_id: image_path
               })
               image.save()
               .then(() => {
@@ -94,14 +96,22 @@ const uploadImage = async (req: Request, res: Response) => {
 }
 
 const deleteImageByAddress = (req: Request, res: Response) => {
-    const imageAddress = req.params.id
-    Image.findOneAndDelete({image_address: imageAddress})
-    .then(() => {
-        res.status(201).json({message: 'Image deleted successfully.'})
-    })
-    .catch((error: Error) => {
-        console.log(error)
-    })
+    const image_public_id = req.body.image_public_id
+    const image_id = req.body.image_id
+    try {
+      const deleteResult = cloudinary.uploader.destroy(image_public_id)
+      .then(response => {
+        Image.findByIdAndDelete(image_id)
+        .then(() => {
+            res.status(201).json({message: 'Image deleted successfully.'})
+        })
+        .catch((error: Error) => {
+            res.status(500)
+        })
+      })
+    } catch(error) {
+      res.status(500)
+    }
 }
 
 export {

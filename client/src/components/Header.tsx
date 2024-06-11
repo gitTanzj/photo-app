@@ -34,7 +34,7 @@ export const Header = () => {
                 </NavLink>
             </div>
             <div className="header-links">
-                <NavLink to="gallery">Gallery</NavLink>
+                <NavLink to="gallery">My Gallery</NavLink>
                 <NavLink to="profile">My Profile</NavLink>
             </div>
             <div className="logout">
