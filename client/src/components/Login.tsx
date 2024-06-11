@@ -66,7 +66,7 @@ const Login = () => {
                 <div className='register-field'>
                     <label htmlFor='login-password'><input id="login-pawssword" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password'/></label>
                 </div>
-                <div className="login-submit-container">
+                <div className="submit-container">
                     <button id="login-submit" type='submit'>Log in</button>
                 </div>
             </form>

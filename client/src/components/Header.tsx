@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
 import { useUserContext } from '../hooks/useUserContext';
+import { TextAlignment } from '@cloudinary/url-gen/qualifiers';
 
 export const Header = () => {
     const navigate = useNavigate();
@@ -34,11 +35,11 @@ export const Header = () => {
                 </NavLink>
             </div>
             <div className="header-links">
-                <NavLink to="gallery">My Gallery</NavLink>
-                <NavLink to="profile">My Profile</NavLink>
+                <NavLink id="gallery-link" to="gallery">Gallery</NavLink>
+                <NavLink id="profile-link" to="profile">My Profile</NavLink>
             </div>
             <div className="logout">
-                <button onClick={() => handleLogout()}>Logout</button>
+                <button id="logout-button" onClick={() => handleLogout()}>Logout</button>
             </div>
         </div>
     )
