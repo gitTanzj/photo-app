@@ -17,10 +17,9 @@ export const Timeline = () => {
 
   return (
     <div className="timeline-container">
-      <div className="timeline">
-        {posting && <CreatePost setPosting={setPosting}/>}
+      {posting && <CreatePost setPosting={setPosting}/>}
 
-      {posting ? null : 
+      {posting ? null :
           <div className="timeline-create-post" onClick={() => {setPosting(true)}}>Create Your Post Here</div>
       }
       {posts.map((post: any) => (

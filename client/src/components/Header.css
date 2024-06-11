@@ -1,9 +1,8 @@
 /* Import remarks: Posistion: sticky makes it so the Header doesn't move out of place and is seperate from the rest of the content.*/
 .header-container{
     width: 100%;
-    border-bottom: 2px solid #A8A8A8;
-    min-width: 100%;
     display: flex;
+    min-width: 100%;
     align-items: center;
     justify-content: space-around;
     position: sticky;
