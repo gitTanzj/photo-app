@@ -61,15 +61,13 @@ const Login = () => {
         <div>
             <form className='register-form' onSubmit={(event) => handleSubmit(event)}>
                 <div className='register-field'>
-                    <label>Email</label>
-                    <input value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <label htmlFor="login-email"><input id="login-email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email'/></label> 
                 </div>
                 <div className='register-field'>
-                    <label>Password</label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <label htmlFor='login-password'><input id="login-pawssword" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password'/></label>
                 </div>
-                <div className="submit-container">
-                    <button type='submit'>Log in</button>
+                <div className="login-submit-container">
+                    <button id="login-submit" type='submit'>Log in</button>
                 </div>
             </form>
         </div>
