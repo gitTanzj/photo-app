@@ -1,19 +1,34 @@
+  body {
+    overflow: hidden;
+    font-family: Roboto;
+  }
+
   .register-field{
     width: 100%;
     padding: 10px;
     display: flex;
     justify-content: space-around;
   }
-  .register-field input{
-    padding: 5px;
-  }
-  .submit-container{
+
+  .login-submit-container{
+    margin-top: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
   }
+
+  button[id="login-submit"]{
+    color: white;
+    background: linear-gradient(#054a91, #8b8989);
+    border: none;
+    width: 324px;
+    font-size: 20px;
+    height: 50px;
+    padding: 10px;
+  }
+
   .register-switch{
     display: flex;
     justify-content: center;
@@ -36,5 +51,25 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: right;
+    align-items: center;
+  }
+
+/* Login screen grey gradient wrapper box */
+  .login-container{
+    display: flex;
+    margin: auto;
+    margin-top: 33vh;
+    border-radius: 20px;
+    width: 500px;
+    background: linear-gradient(#e8e8e8 10%,#FFFFFF 100%);
+  }
+
+/* Email && Password inputs and their styling */
+  input[id=login-email], input[id=login-pawssword] {
+    border: #1a090d 2.5px solid;
+    border-radius: 5px;
+    width: 300px;
+    height: 30px;
+    padding: 10px;
+    font-size: 20px;
   }

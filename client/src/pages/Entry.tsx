@@ -10,7 +10,7 @@ export const Entry = () => {
 
   // register vormi ja login vormi switch
   return (
-    <div className="container">
+    <div className="login-container">
       <div className="entry">
         {register ? 
         <div className="register">
@@ -33,6 +33,5 @@ export const Entry = () => {
         </div>
       </div>
     </div>
-      
   )
 }
