@@ -55,19 +55,16 @@ const Register = (props: RegisterProps) => {
     <div>
         <form className='register-form' onSubmit={(event) => handleSubmit(event)}>
             <div className='register-field'>
-                <label>Email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <label htmlFor='register-email'><input id='register-email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email'/></label>
             </div>
             <div className='register-field'>
-                <label>Username</label>
-                <input value={username} onChange={(e) => setUsername(e.target.value)}/>
+                <label htmlFor='register-username'><input id='register-username' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Username'/></label>
             </div>
             <div className='register-field'>
-                <label>Password</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <label htmlFor='register-password'><input id='register-password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password'/></label>
             </div>
             <div className="submit-container">
-              <button type='submit'>Create account</button>
+              <button id='register-submit' type='submit'>Create account</button>
             </div>
         </form>
     </div>

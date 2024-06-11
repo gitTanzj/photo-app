@@ -10,7 +10,7 @@
     justify-content: space-around;
   }
 
-  .login-submit-container{
+  .submit-container{
     margin-top: 5rem;
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@
     height: 100%;
   }
 
-  button[id="login-submit"]{
+  button[id="login-submit"], button[id="register-submit"]{
     color: white;
     background: linear-gradient(#054a91, #8b8989);
     border: none;
@@ -64,8 +64,8 @@
     background: linear-gradient(#e8e8e8 10%,#FFFFFF 100%);
   }
 
-/* Email && Password inputs and their styling */
-  input[id=login-email], input[id=login-pawssword] {
+/* Form inputs and their styling */
+  input[id=login-email], input[id=login-pawssword], input[id=register-email], input[id=register-username] ,input[id=register-password]{
     border: #1a090d 2.5px solid;
     border-radius: 5px;
     width: 300px;
