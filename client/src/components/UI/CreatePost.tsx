@@ -40,18 +40,16 @@ export const CreatePost: React.FC<createPostProps> = ({ setPosting }) => {
     <div className="create-post-container">
         <div className="create-post">
             <h1>Create post</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="create-form" onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="title">Title</label>
-                    <input type="text" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)}/>
+                    <label htmlFor="title"><input type="text" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Title'/></label>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="content">Description</label>
-                    <textarea id="content" name="content" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                    <label htmlFor="content"><textarea id="content" name="content" value={description} onChange={(e) => setDescription(e.target.value)} placeholder='Type something original!'></textarea></label>
                 </div>
                 <div className="form-group">
-                    <button type="submit">Create post</button>
-                    <button onClick={() => setPosting(false)}>Cancel</button>
+                    <button id='create-post-button' type="submit">Create post</button>
+                    <button id="cancel-button" onClick={() => setPosting(false)}>Cancel</button>
                 </div>
             </form>
         </div>

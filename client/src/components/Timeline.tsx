@@ -23,7 +23,10 @@ export const Timeline = () => {
           <div className="timeline-create-post" onClick={() => {setPosting(true)}}>Create Your Post Here</div>
       }
       {posts.map((post: any) => (
+      <>
         <Post key={post._id} title={post.title} description={post.description} images={post.images} author={post.author}/>
+        <br/>
+      </>
       ))}
     </div>
   )

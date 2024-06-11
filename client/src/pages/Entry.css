@@ -1,6 +1,6 @@
   body {
     overflow: hidden;
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
   }
 
   .register-field{
@@ -19,10 +19,11 @@
     height: 100%;
   }
 
+  /* Login and Register buttons */
   button[id="login-submit"], button[id="register-submit"]{
     color: white;
     background: linear-gradient(#054a91, #8b8989);
-    border: none;
+    border: #bbbbbb 3px solid;
     width: 324px;
     font-size: 20px;
     height: 50px;
@@ -66,7 +67,7 @@
 
 /* Form inputs and their styling */
   input[id=login-email], input[id=login-pawssword], input[id=register-email], input[id=register-username] ,input[id=register-password]{
-    border: #1a090d 2.5px solid;
+    border: #bbbbbb 3px solid;
     border-radius: 5px;
     width: 300px;
     height: 30px;

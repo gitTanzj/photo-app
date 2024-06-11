@@ -14,7 +14,7 @@ a{
 
 button{
   width: 300px;
-  border: 1px solid #000000;
+  border: 3px solid #bbbbbb;
   background-color: white;
   border-width: 2px;
   border-radius: 5px;
@@ -27,6 +27,11 @@ button:hover{
   cursor: pointer;
 }
 
+a:hover{
+  transform: translate(-2px, -2px);
+  cursor: pointer;
+}
+
 .container{
   display: flex;
   flex-direction: column;
@@ -34,4 +39,5 @@ button:hover{
   align-items: center;
   width: 100%;
   height: 100%;
+  background: linear-gradient(#ffffff, #054a91);
 }

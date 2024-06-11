@@ -5,5 +5,61 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.create-post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* These are the buttons in the post creation form. */
+input[id="title"], textarea[id="content"]{
+    width: 300px;
+    height: 30px;
+    border: #1a090d 3px solid;
+    border-radius: 5px;;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding: 3px;
+}
+
+/* Cancel and Sumbit buttons in the post-creation-form */
+button[id="create-post-button"], button[id="cancel-button"] {
+    display: inline-block;
+    white-space: nowrap;
+    justify-content: center;
+    border: #bbbbbb 3px solid;
+    border-radius: 5px;
+    padding: 10px;
+    width: 135px;
+    background: linear-gradient(#054a91, #8b8989);
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+button[type="create-post-button"] {
+    margin-right: 20px;
+}
+
+button[id="cancel-button"] {
+    margin-left: 20px;
+}
+
+input[id="title"] {
+    margin-bottom: 10px;
+}
+
+textarea[id="content"] {
+    height: 100px;
 }

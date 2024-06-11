@@ -1,22 +1,29 @@
-
+/* Import remarks: Posistion: sticky makes it so the Header doesn't move out of place and is seperate from the rest of the content.*/
 .header-container{
-    border-bottom: 2px solid #A8A8A8;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    position: sticky;
+    top: 0;
 }
+/* Links don't have a line under them */
 .header-container a{
     text-decoration: none;
 }
+
+/* Cursive font for current logo design which is just text and also some padding so that it sits where we wan't it on the header. */
 .header-text{
     padding: 0 5% 0 5%;
     font-family: 'Indie Flower', cursive;
     font-size: 1.5em;
 }
+
+/* Importan remarks: white-space: nowrap is so that buttons don't line break. */
 .header-links{
     display: flex;
     align-items: center;
+    white-space: nowrap;
 }
 .header-links *{
     padding: 0% 20% 0% 20%;
@@ -25,4 +32,31 @@
     margin-left: auto;
     cursor: pointer;
     padding: 1% 5% 1% 5%;
+}
+
+/* These are the headers buttons. */
+a[id="profile-link"], a[id="gallery-link"], button[id="logout-button"]{
+    display: flex;
+    justify-content: center;
+    border: #bbbbbb 3px solid;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100px;
+    background: linear-gradient(#054a91, #8b8989);
+    color: white;
+    font-size: 16px;
+}
+
+button[id="logout-button"]{
+    width: 126px;
+    height: 45px;
+}
+
+a[id="profile-link"]{
+    margin-left: 20px;
+    ;
+}
+
+a[id="gallery-link"] {
+    margin-right: 20px;
 }
