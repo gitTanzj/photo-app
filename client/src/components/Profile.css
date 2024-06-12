@@ -1,0 +1,54 @@
+.profile-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 80vh;
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.user-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vh;
+    min-height: 80vh;
+}
+
+/* The user profile rectangle that the circle is inserted in halfway*/
+.user-profile-rect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 700px;
+    background-color: #ffffff;
+    padding: 2% 5% 2% 5%;
+    width: 400px;
+    height: 200px;
+    background: linear-gradient(200deg,#054a91, #ffffff);
+    margin-top: 140px;
+    margin-bottom: 100px;
+    border: 1px solid #000000;
+}
+
+/* The user profile circle */
+.user-profile-circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    width: 250px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 2% 5% 2% 5%;
+    margin-top: -140px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+}
