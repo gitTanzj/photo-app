@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, ChangeEvent, SetStateAction } from 'react'
+import React, { useState, FormEvent, ChangeEvent, useEffect } from 'react'
 import imagePlaceholder from '../../assets/image-placeholder.png'
 import axios from 'axios'
 import './ImageUpload.css'
@@ -12,6 +12,11 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({ setUploading }) => {
   const [postImage, setPostImage] = useState({myFile: ""})
   const [uploadFile, setUploadFile] = useState("" as any)
 
+  useEffect(() => {
+    console.log(postImage)
+    console.log(uploadFile)
+  }, [postImage, uploadFile])
+  
   const handleFileUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     if(e.target.files === null) {
       return console.log('No file selected');
@@ -35,6 +40,8 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({ setUploading }) => {
         setUploading(false)
         setUploadFile(null)
         setPostImage({myFile: ""})
+        console.log(uploadFile)
+        console.log(postImage)
       })
       .catch((error) => {
         console.log(error)
